@@ -45,6 +45,15 @@ function ProCourse() {
 
   return (
     <Box bg="gray.50" minH="100vh" py={16} px={4}>
+           <Link to ="/home"
+        color="#FF6247" 
+        variant="link" 
+        marginBottom={6} 
+        fontSize="lg" 
+     
+      >
+        ← Back to Courses
+      </Link>
       <Box maxW="7xl" mx="auto">
         <Text
           fontSize="5xl"
