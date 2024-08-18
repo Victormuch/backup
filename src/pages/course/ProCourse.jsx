@@ -13,7 +13,7 @@ function ProCourse() {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const response = await axios.get("http://127.0.0.1:5000/courses/pro");
+        const response = await axios.get("http://127.0.0.1:5000/pro-courses");
         // Set the response data into courses state
         setCourses(response.data.courses);
         setLoading(false);
