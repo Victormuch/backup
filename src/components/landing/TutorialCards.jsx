@@ -27,7 +27,7 @@ const TutorialCards = () => {
     fetchTutorials();
   }, []);
 
-  const displayedTutorials = tutorials.slice(15, 18);
+  const displayedTutorials = tutorials.slice(4, 7);
 
   return (
     <section className="py-16 bg-[#FF6247]">
