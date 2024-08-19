@@ -12,7 +12,7 @@ function RecommendedSection({ searchTerm }) {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/courses");
+        const response = await axios.get("https://lms-backend-5on9.onrender.com/courses");
         const fetchedCourses = response.data; 
         setCourses(fetchedCourses);
         setLoading(false);

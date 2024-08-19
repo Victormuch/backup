@@ -10,8 +10,8 @@ const TutorialCards = () => {
   useEffect(() => {
     const fetchTutorials = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/courses");
-        const courses = response.data; // Adjust based on the actual response structure
+        const response = await axios.get("https://lms-backend-5on9.onrender.com/courses");
+        const courses = response.data; 
         if (Array.isArray(courses)) {
           setTutorials(courses);
         } else {

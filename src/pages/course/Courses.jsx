@@ -11,7 +11,7 @@ const Courses = () => {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:5000/courses');
+        const response = await axios.get('https://lms-backend-5on9.onrender.com/courses');
         const activeCourses = response.data.filter(course => !course.isArchived); // Filter out archived courses
         setCourses(activeCourses);
         setLoading(false);

@@ -17,7 +17,7 @@ const CourseManagement = () => {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const response = await axios.get("http://127.0.0.1:5000/courses");
+        const response = await axios.get("https://lms-backend-5on9.onrender.com/courses");
         setCourses(response.data);
         setLoading(false);
       } catch (error) {

@@ -16,7 +16,7 @@ const CourseVideo = () => {
   useEffect(() => {
     const fetchCourseData = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/courses/${courseId}`);
+        const response = await fetch(`https://lms-backend-5on9.onrender.com/courses/${courseId}`);
         if (!response.ok) {
           throw new Error('Failed to fetch course data');
         }

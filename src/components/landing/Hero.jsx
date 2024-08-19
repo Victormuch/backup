@@ -8,7 +8,7 @@ function Hero() {
     useEffect(() => {
         const fetchFeaturedCourse = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/courses/18'); // Fetch the course with id 
+                const response = await axios.get('https://lms-backend-5on9.onrender.com/courses/18'); // Fetch the course with id 
                 setFeaturedCourse(response.data || null);
             } catch (error) {
                 console.error('Error fetching featured course:', error);

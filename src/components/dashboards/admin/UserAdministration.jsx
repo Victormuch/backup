@@ -31,7 +31,7 @@ const UserAdministration = ({ addActivity }) => {
     };
 
     try {
-      const response = await axios.post('http://127.0.0.1:5000/courses', newCourse);
+      const response = await axios.post('https://lms-backend-5on9.onrender.com/courses', newCourse);
       setCourses([response.data, ...courses]);
       addActivity(`Course "${courseData.title}" was added.`);
       setCourseData({

@@ -21,7 +21,7 @@ function Quiz() {
   useEffect(() => {
     const fetchQuizData = async () => {
       try {
-        const response = await fetch(`http://127.0.0.1:5000/questions/${category.toLowerCase()}`);
+        const response = await fetch(`https://lms-backend-5on9.onrender.com/questions/${category.toLowerCase()}`);
         if (!response.ok) {
           throw new Error(`Failed to fetch quiz data: ${response.statusText}`);
         }

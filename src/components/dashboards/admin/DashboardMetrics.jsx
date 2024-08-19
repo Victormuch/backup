@@ -12,7 +12,7 @@ const DashboardMetrics = () => {
   useEffect(() => {
     const fetchActiveCourses = async () => {
       try {
-        const response = await axios.get("http://127.0.0.1:5000/courses/count");
+        const response = await axios.get("https://lms-backend-5on9.onrender.com/courses/count");
         setActiveCourses(response.data.count);
       } catch (error) {
         console.error("Error fetching active courses:", error);
