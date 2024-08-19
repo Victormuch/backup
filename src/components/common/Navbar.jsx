@@ -1,20 +1,13 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faUser,
-  faUserCircle,
-  faCog,
-  faSignOutAlt,
-  faCrown,
-  faGraduationCap,
-  faUserShield
-} from '@fortawesome/free-solid-svg-icons';
+import { faBars, faUser, faSignOutAlt, faCrown, faGraduationCap, faUserShield } from '@fortawesome/free-solid-svg-icons';
 import { useAuth } from '../../contexts/AuthContext';
 
 function Navbar() {
   const { isAuthenticated, user, logout } = useAuth();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const dropdownRef = useRef(null);
   const navigate = useNavigate();
 
@@ -35,23 +28,40 @@ function Navbar() {
     setIsDropdownOpen(!isDropdownOpen);
   };
 
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
   const handleLogout = async () => {
     await logout();
     navigate('/');
+    setIsMobileMenuOpen(false);  
+  };
+
+  const handleLinkClick = () => {
+    setIsMobileMenuOpen(false); 
   };
 
   return (
     <header className="bg-white shadow-sm">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <Link to="/" className="text-2xl font-bold text-black">
+        <Link to="/" className="text-2xl font-bold text-black" onClick={handleLinkClick}>
           SkillQuest 🧠
         </Link>
-        <nav>
-          <ul className="flex space-x-6 items-center">
+        <button
+          onClick={toggleMobileMenu}
+          className="lg:hidden text-black focus:outline-none"
+          aria-label="Toggle menu"
+        >
+          <FontAwesomeIcon icon={faBars} size="lg" />
+        </button>
+        <nav className={`lg:flex lg:items-center lg:space-x-6 ${isMobileMenuOpen ? 'block' : 'hidden'} lg:block`}>
+          <ul className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-6 items-center">
             <li>
               <Link
                 to="/subscription"
                 className="text-coral-500 font-bold border-2 border-coral-500 px-2 py-0.5 rounded-md hover:bg-coral-500 hover:text-white transition-colors"
+                onClick={handleLinkClick}
               >
                 <FontAwesomeIcon icon={faCrown} className="mr-1" />
                 PRO
@@ -62,6 +72,7 @@ function Navbar() {
                 <Link
                   to="/home"
                   className="text-black font-bold hover:text-coral-500 transition-colors"
+                  onClick={handleLinkClick}
                 >
                   Home
                 </Link>
@@ -71,6 +82,7 @@ function Navbar() {
               <Link
                 to="/labs"
                 className="text-black font-bold hover:text-coral-500 transition-colors"
+                onClick={handleLinkClick}
               >
                 Labs
               </Link>
@@ -79,6 +91,7 @@ function Navbar() {
               <Link
                 to="/courses"
                 className="text-black font-bold hover:text-coral-500 transition-colors"
+                onClick={handleLinkClick}
               >
                 Courses
               </Link>
@@ -98,6 +111,7 @@ function Navbar() {
                       <Link
                         to="/student-dashboard"
                         className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        onClick={handleLinkClick}
                       >
                         <FontAwesomeIcon
                           icon={faGraduationCap}
@@ -110,6 +124,7 @@ function Navbar() {
                       <Link
                         to="/admin-dashboard"
                         className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        onClick={handleLinkClick}
                       >
                         <FontAwesomeIcon
                           icon={faUserShield}
@@ -136,6 +151,7 @@ function Navbar() {
                 <Link
                   to="/login"
                   className="text-white font-bold bg-coral-500 px-4 py-2 rounded-md hover:bg-coral-600 transition-colors"
+                  onClick={handleLinkClick}
                 >
                   Login
                 </Link>
